@@ -834,8 +834,40 @@
 }
 
 
--(IBAction)fetchGraphObjectForManish:(id)sender
+-(IBAction)postScore:(id)sender
 {
+    NSMutableDictionary* params =   [NSMutableDictionary dictionaryWithObjectsAndKeys:
+                                     [NSString stringWithFormat:@"%@", @"4356"], @"score",
+                                     nil];
+    
+    NSLog(@"Fetching current score");
+    
+    // Get the score, and only send the updated score if it's highter
+    [FBRequestConnection startWithGraphPath:[NSString stringWithFormat:@"%@/scores", @"675938339154902"] parameters:params HTTPMethod:@"GET" completionHandler:^(FBRequestConnection *connection, id result, NSError *error) {
+        
+        if (result && !error) {
+            
+            int nCurrentScore = [[[[result objectForKey:@"data"] objectAtIndex:0] objectForKey:@"score"] intValue];
+            
+            NSLog(@"Current score is %d", nCurrentScore);
+            
+            if (4356 > nCurrentScore) {
+                
+                NSLog(@"Posting new score of %d", 4356);
+                
+                [FBRequestConnection startWithGraphPath:[NSString stringWithFormat:@"%@/scores", @"675938339154902"] parameters:params HTTPMethod:@"POST" completionHandler:^(FBRequestConnection *connection, id result, NSError *error) {
+                    
+                    NSLog(@"Score posted");
+                }];
+            }
+            else {
+                NSLog(@"Existing score is higher - not posting new score");
+            }
+        }
+    }];
+    
+    
+    
     
 }
 
@@ -846,5 +878,21 @@
     
 }
 
+- (IBAction)getFriendScore:(id)sender {
+    
+
+    
+    [FBRequestConnection startWithGraphPath:@"686032654808679/scores"
+                                 parameters:nil
+                                 HTTPMethod:@"GET"
+                          completionHandler:
+     ^(FBRequestConnection *connection, id result, NSError *error) {
+         if (error) {
+             NSLog(@"%@",error);
+         }
+         else
+             NSLog(@"Result = %@",result);
+     }];
+}
 
 @end

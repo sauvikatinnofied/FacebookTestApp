@@ -107,13 +107,23 @@
                                 </connections>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="ns5-iQ-PfD">
-                                <rect key="frame" x="81" y="427" width="155" height="30"/>
+                                <rect key="frame" x="122" y="417" width="76" height="30"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <state key="normal" title="Fetch Manish's Object">
+                                <state key="normal" title="Post Score">
                                     <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                                 </state>
                                 <connections>
-                                    <action selector="fetchGraphObjectForManish:" destination="vXZ-lx-hvc" eventType="touchUpInside" id="Sp4-qO-TxE"/>
+                                    <action selector="postScore:" destination="vXZ-lx-hvc" eventType="touchUpInside" id="Mbh-wA-z9T"/>
+                                </connections>
+                            </button>
+                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="0qN-hp-WoH">
+                                <rect key="frame" x="82" y="464" width="135" height="30"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <state key="normal" title="Get Manish's Score">
+                                    <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                                </state>
+                                <connections>
+                                    <action selector="getFriendScore:" destination="vXZ-lx-hvc" eventType="touchUpInside" id="o27-1e-3Zl"/>
                                 </connections>
                             </button>
                         </subviews>

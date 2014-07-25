@@ -895,4 +895,110 @@
      }];
 }
 
+
+
+#pragma mark - ACHIVEMENT METHODS
+
+- (IBAction)createAchivement:(id)sender {
+    
+    
+    NSDictionary *params = [NSDictionary dictionaryWithObjectsAndKeys:
+                            @"605088866273612", @"fb:app_id",
+                            @"game.achievement", @"og:type",
+                            @"http://192.168.2.6:8888/facebooktest/achivement.html", @"og:url",
+                            @"Sample Game Achievement", @"og:title",
+                            @"https://s-static.ak.fbcdn.net/images/devsite/attachment_blank.png", @"og:image",
+                            @"1000", @"game:points",
+                            nil
+                            ];
+    
+    /* make the API call */
+    [FBRequestConnection startWithGraphPath:@"/me/objects/" //game.achievement
+                                 parameters:params
+                                 HTTPMethod:@"POST"
+                          completionHandler:^(
+                                              FBRequestConnection *connection,
+                                              id result,
+                                              NSError *error
+                                              ) {
+                              /* handle the result */
+                              
+                              if (error) {
+                                  NSLog(@"%@",error);
+                              }
+                              else
+                                  NSLog(@"Result = %@",result);
+                              
+                          }];
+    
+}
+- (IBAction)readAchivement:(id)sender {
+    /* make the API call */
+    [FBRequestConnection startWithGraphPath:@"/me/objects/"
+                                 parameters:nil
+                                 HTTPMethod:@"GET"
+                          completionHandler:^(
+                                              FBRequestConnection *connection,
+                                              id result,
+                                              NSError *error
+                                              ) {
+                              /* handle the result */
+                              
+                              if (error) {
+                                  NSLog(@"%@",error);
+                              }
+                              else
+                                  NSLog(@"Result = %@",result);
+                          }];
+}
+- (IBAction)updateAchivement:(id)sender {
+    
+    NSDictionary *params = [NSDictionary dictionaryWithObjectsAndKeys:
+                            @"605088866273612", @"fb:app_id",
+                            @"game.achievement", @"og:type",
+                            @"http://192.168.2.6:8888/facebooktest/achivement.html", @"og:url",
+                            @"Sample Game Achievement", @"og:title",
+                            @"https://s-static.ak.fbcdn.net/images/devsite/attachment_blank.png", @"og:image",
+                            @"10000", @"game:points",
+                            nil
+                            ];
+    /* make the API call */
+    [FBRequestConnection startWithGraphPath:@"/id_from_create_call"
+                                 parameters:params
+                                 HTTPMethod:@"POST"
+                          completionHandler:^(
+                                              FBRequestConnection *connection,
+                                              id result,
+                                              NSError *error
+                                              ) {
+                              /* handle the result */
+                              
+                              if (error) {
+                                  NSLog(@"%@",error);
+                              }
+                              else
+                                  NSLog(@"Result = %@",result);
+                          }];
+}
+
+- (IBAction)deleteAchivement:(id)sender {
+    /* make the API call */
+    [FBRequestConnection startWithGraphPath:@"/id_from_create_call"
+                                 parameters:nil
+                                 HTTPMethod:@"DELETE"
+                          completionHandler:^(
+                                              FBRequestConnection *connection,
+                                              id result,
+                                              NSError *error
+                                              ) {
+                              /* handle the result */
+                              
+                              if (error) {
+                                  NSLog(@"%@",error);
+                              }
+                              else
+                                  NSLog(@"Result = %@",result);
+                          }];
+}
+
 @end
